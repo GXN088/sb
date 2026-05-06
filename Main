@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Main {
+    public static String modifyText(String text, String target, String replacement) {
+        // Напишите код здесь
+        
+        // Guard clause: проверка на null
+        if (text == null || target == null || replacement == null) {
+            return "Invalid input";
+        }
+        
+        // Создаём StringBuffer с входным текстом
+        StringBuffer sb = new StringBuffer(text);
+        
+        // Ищем первое вхождение target
+        int index = sb.indexOf(target);
+        
+        // Если target найден, заменяем первое вхождение
+        if (index != -1) {
+            sb.replace(index, index + target.length(), replacement);
+        }
+        
+        // Добавляем восклицательный знак в конец
+        sb.append("!");
+        
+        return sb.toString();
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
+        String target = scanner.nextLine();
+        String replacement = scanner.nextLine();
+        
+        if (text.equals("null")) text = null;
+        if (target.equals("null")) target = null;
+        if (replacement.equals("null")) replacement = null;
+        
+        System.out.println(modifyText(text, target, replacement));
+    }
+}
